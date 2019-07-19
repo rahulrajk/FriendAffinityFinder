@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FriendAffinityFinder</string>
+    <string name="facebook_app_id">2556636317703124</string>
+    <string name="fb_login_protocol_scheme">fb2556636317703124</string>
+
+
+    <string name="consumer_key">3gtC69rvKULjmupWrquuAwmMJ</string>
+    <string name="consumer_secret_key">vjXAzfI7vcXIdRbyar12dBFx8L7iO7rmhBpIeoScOMig5rbszx</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
