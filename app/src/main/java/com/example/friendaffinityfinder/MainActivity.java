@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     LoginButton loginButton;
     CallbackManager callbackManager;
     boolean isLoggedIn=false;
+    String accessTokenfb="";
 
 
 
@@ -61,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d("success","success");
+                accessTokenfb = loginResult.getAccessToken().getToken();
+                Log.d("acceesstokenfb",accessTokenfb);
                 editor.putString("userid", loginResult.getAccessToken().getUserId());
+                editor.putString("accessToken", loginResult.getAccessToken().getToken());
                 editor.apply();
                 editor.commit();
                 AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -143,79 +147,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode,  data);
     }
 
-    public void accessPermission() {
 
-
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                if (!sharedPreferences.getString("userid", "").equals(loginResult.getAccessToken().getUserId()) || sharedPreferences.getString("userid", "").isEmpty() || !sharedPreferences.contains("userid")) {
-                    editor.putString("userid", loginResult.getAccessToken().getUserId());
-                    Log.d("userid", loginResult.getAccessToken().getUserId());
-                    AccessToken accessToken = AccessToken.getCurrentAccessToken();
-                    boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-                    Log.d("isloggedin", "log->" + isLoggedIn);
-                    GraphRequest request = GraphRequest.newMeRequest(
-                            accessToken,
-                            new GraphRequest.GraphJSONObjectCallback() {
-                                @Override
-                                public void onCompleted(
-                                        JSONObject object,
-                                        GraphResponse response) {
-                                    // Application code
-                                    Log.d("response", object.toString());
-                                    JSONObject location = null;
-                                    String city = null;
-                                    try {
-                                        location = object.getJSONObject("location");
-                                        city = location.getString("name");
-                                        Log.d("city", city);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-
-
-                                    try {
-                                        editor.putString("username", object.getString("name"));
-                                        editor.putString("email", object.getString("email"));
-                                        editor.putString("gender", object.getString("gender"));
-                                        editor.putString("birthday", object.getString("birthday"));
-                                        editor.putString("city", city);
-                                        editor.apply();
-                                        editor.commit();
-                                        Log.d("applyihng", "applying");
-
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            });
-                    Bundle parameters = new Bundle();
-                    parameters.putString("fields", "id,name,email,gender,birthday,hometown,location");
-                    request.setParameters(parameters);
-                    request.executeAsync();
-                }
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-                Log.d("fbcancel", "fbcancel");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-                Log.d("fberror", "fberror");
-            }
-        });
-    }
 
     private void loginMethod(){
-        if (sharedPreferences.contains("userid")&&isLoggedIn){
-            Log.d("contains","userid");
+        if (sharedPreferences.contains("userid")&&isLoggedIn&&sharedPreferences.contains("accessToken")){
+            Log.d("contains",sharedPreferences.getString("accessToken",""));
             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
             startActivity(intent);
             finish();

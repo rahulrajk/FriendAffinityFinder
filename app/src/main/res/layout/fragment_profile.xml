@@ -1,192 +1,444 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:facebook="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:id="@+id/toplayout1"
-        android:background="@drawable/side_nav_bar">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_add_black_24dp"
-            android:layout_alignParentEnd="true"
-            android:tint="@color/colorWhite"
-            android:id="@+id/add_account"
-            android:layout_margin="8dp"/>
-
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:id="@+id/picandnamecard"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="80dp"
-                android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profilecard"
+                android:layout_centerHorizontal="true"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardElevation="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
-                    android:layout_below="@+id/friendProfilePicture"
-                    android:layout_marginBottom="12dp"
                     android:layout_centerHorizontal="true"
+                    android:text="PROFILE"
+                    android:layout_margin="8dp"
                     android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/name_txt"
-                    android:fontFamily="@font/amita"
-                    android:text="Rahul Raj K" />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="22sp" />
+            </androidx.cardview.widget.CardView>
 
+            <!--Profile -->
 
-                <com.facebook.login.widget.ProfilePictureView
-                    android:id="@+id/friendProfilePicture"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/profilecard"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/picturecard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    facebook:com_facebook_preset_size="normal"
-                    />
+                    android:layout_margin="10dp"
+                    android:background="@drawable/circular_view"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="8dp">
+
+                    <com.facebook.login.widget.ProfilePictureView
+                        android:id="@+id/friendProfilePicture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        facebook:com_facebook_preset_size="normal" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/name_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/picturecard"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/amita"
+                    android:text="Rahul Raj K"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
 
-
-
         </RelativeLayout>
 
 
 
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toplayout1"
-        android:layout_marginTop="-200dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
-            android:background="@color/colorWhite">
-
-
-        </RelativeLayout>
-
+        <!--CardView for big five traits-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/progressCircles"
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_margin="22dp"
+            android:layout_marginTop="-200dp"
             android:layout_height="wrap_content"
-            app:cardElevation="8dp"
+            android:layout_below="@+id/picandnamecard"
             android:layout_centerHorizontal="true"
+            android:padding="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="12dp"
+            app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorWhite">
+            app:cardElevation="8dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_below="@+id/friendProfilePicture"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="18dp"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
 
+                <!--Progress Circles-->
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!--Circle 1st row-->
+                <LinearLayout
+                    android:id="@+id/row1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Gender"
-                    android:id="@+id/g_txt"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="18sp"/>
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:textColor="@color/colorBlue"
-                    android:id="@+id/gender_txt"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/g_txt"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="18sp"/>
+                    <!--1st circle-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Birthday"
-                    android:id="@+id/b_txt"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/bree_serif"
-                    android:layout_below="@+id/gender_txt"
-                    android:textSize="18sp"/>
+                        <RelativeLayout
+                            android:id="@+id/circle1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle1head">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11/09/1999"
-                    android:textColor="@color/colorBlue"
-                    android:id="@+id/birthday_txt"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/b_txt"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="18sp"/>
+                            <ProgressBar
+                                android:id="@+id/progressbar1"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="8dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                                android:secondaryProgress="0" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:id="@+id/l_txt"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/bree_serif"
-                    android:layout_below="@+id/birthday_txt"
-                    android:textSize="18sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="72"
+                                android:textColor="@color/colorBlue"
+                                android:textSize="32sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Chennai, India"
-                    android:textColor="@color/colorBlue"
-                    android:id="@+id/location_txt"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/l_txt"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="18sp"/>
+                        </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:id="@+id/e_txt"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/bree_serif"
-                    android:layout_below="@+id/location_txt"
-                    android:textSize="18sp"/>
+                        <RelativeLayout
+                            android:id="@+id/circle1head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circular_view"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="18dp"
+                                android:paddingEnd="18dp"
+                                android:text="Openness"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <!--2nd circle-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5">
+
+                        <RelativeLayout
+                            android:id="@+id/circle2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle2head">
+
+                            <ProgressBar
+                                android:id="@+id/progressbar2"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="8dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                                android:secondaryProgress="0" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="92"
+                                android:textColor="@color/colorBlue"
+                                android:textSize="32sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/circle2head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circular_view"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="18dp"
+                                android:paddingEnd="18dp"
+                                android:text="Diligence"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <!--Circle 3rd row-->
+                <LinearLayout
+                    android:id="@+id/row2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="rahulrajk.citcse2017@gmail.com"
-                    android:textColor="@color/colorBlue"
-                    android:id="@+id/email_txt"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/e_txt"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="18sp"/>
+                    android:layout_below="@+id/row1"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <!--3rd circle-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/circle3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle3head">
+
+                            <ProgressBar
+                                android:id="@+id/progressbar3"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="4dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                                android:secondaryProgress="0" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="72"
+                                android:textColor="@color/colorBlue"
+                                android:textSize="32sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/circle3head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circular_view"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="18dp"
+                                android:paddingEnd="18dp"
+                                android:text="Extraversion"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <!--Circle 2st row-->
+                <LinearLayout
+                    android:id="@+id/row3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/row2"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!--4th circle-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5">
+
+                        <RelativeLayout
+                            android:id="@+id/circle4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle4head">
+
+                            <ProgressBar
+                                android:id="@+id/progressbar4"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="4dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                                android:secondaryProgress="0" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="72"
+                                android:textColor="@color/colorBlue"
+                                android:textSize="32sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/circle4head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circular_view"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="18dp"
+                                android:paddingEnd="18dp"
+                                android:text="Agreeableness"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <!--5th circle-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5">
+
+                        <RelativeLayout
+                            android:id="@+id/circle5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle5head">
+
+                            <ProgressBar
+                                android:id="@+id/progressbar5"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="4dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                                android:secondaryProgress="0" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="92"
+                                android:textColor="@color/colorBlue"
+                                android:textSize="32sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/circle5head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circular_view"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:paddingStart="18dp"
+                                android:paddingEnd="18dp"
+                                android:text="Emotional range"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -196,228 +448,4 @@
 
     </RelativeLayout>
 
-
-</RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--xmlns:shimmer="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context=".ProfileFragment">-->
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--xmlns:tools="http://schemas.android.com/tools"-->
-        <!--android:layout_width="match_parent"-->
-        <!--xmlns:facebook="http://schemas.android.com/apk/res-auto"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@color/colorWhite"-->
-        <!--tools:context=".LoggedInActivity">-->
-
-
-        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/pr_txt"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:text="Profile"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:fontFamily="cursive"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:background="@color/colorBlue"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:textColor="@color/colorWhite"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:textSize="32sp"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_centerHorizontal="true"/>&ndash;&gt;-->
-
-        <!--<com.facebook.login.widget.ProfilePictureView-->
-            <!--android:id="@+id/friendProfilePicture"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--facebook:com_facebook_preset_size="normal"-->
-            <!--/>-->
-
-        <!--<RelativeLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_below="@+id/friendProfilePicture"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="18dp"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Name"-->
-                <!--android:id="@+id/n_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:fontFamily="@font/bree_serif"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Rahu Raj K"-->
-                <!--android:textColor="@color/colorBlue"-->
-                <!--android:id="@+id/name_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_below="@+id/n_txt"-->
-                <!--android:fontFamily="@font/montserrat"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Gender"-->
-                <!--android:id="@+id/g_txt"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:fontFamily="@font/bree_serif"-->
-                <!--android:layout_below="@+id/name_txt"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Male"-->
-                <!--android:textColor="@color/colorBlue"-->
-                <!--android:id="@+id/gender_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_below="@+id/g_txt"-->
-                <!--android:fontFamily="@font/montserrat"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Birthday"-->
-                <!--android:id="@+id/b_txt"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:fontFamily="@font/bree_serif"-->
-                <!--android:layout_below="@+id/gender_txt"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="11/09/1999"-->
-                <!--android:textColor="@color/colorBlue"-->
-                <!--android:id="@+id/birthday_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_below="@+id/b_txt"-->
-                <!--android:fontFamily="@font/montserrat"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Location"-->
-                <!--android:id="@+id/l_txt"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:fontFamily="@font/bree_serif"-->
-                <!--android:layout_below="@+id/birthday_txt"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Chennai, India"-->
-                <!--android:textColor="@color/colorBlue"-->
-                <!--android:id="@+id/location_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_below="@+id/l_txt"-->
-                <!--android:fontFamily="@font/montserrat"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Email"-->
-                <!--android:id="@+id/e_txt"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:fontFamily="@font/bree_serif"-->
-                <!--android:layout_below="@+id/location_txt"-->
-                <!--android:textSize="18sp"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="rahulrajk.citcse2017@gmail.com"-->
-                <!--android:textColor="@color/colorBlue"-->
-                <!--android:id="@+id/email_txt"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_below="@+id/e_txt"-->
-                <!--android:fontFamily="@font/montserrat"-->
-                <!--android:textSize="18sp"/>-->
-
-        <!--</RelativeLayout>-->
-
-
-        <!--&lt;!&ndash;<com.facebook.shimmer.ShimmerFrameLayout&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/shimmer_view_container"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
-            <!--&lt;!&ndash;shimmer:duration="800"&ndash;&gt;-->
-            <!--&lt;!&ndash;tools:ignore="MissingConstraints">&ndash;&gt;-->
-
-            <!--&lt;!&ndash;&lt;!&ndash; Adding 7 rows of placeholders &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-                <!--&lt;!&ndash;<include layout="@layout/data_placeholder_layout" />&ndash;&gt;-->
-            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
-
-        <!--&lt;!&ndash;</com.facebook.shimmer.ShimmerFrameLayout>&ndash;&gt;-->
-
-
-
-        <!--<com.twitter.sdk.android.core.identity.TwitterLoginButton-->
-            <!--android:id="@+id/default_twitter_login_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_above="@+id/login_button"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_height="wrap_content" />-->
-
-    <!--</RelativeLayout>-->
-
-<!--</FrameLayout>-->
+</ScrollView>

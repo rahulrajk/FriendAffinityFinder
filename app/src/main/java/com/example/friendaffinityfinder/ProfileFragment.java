@@ -5,19 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import com.facebook.login.widget.ProfilePictureView;
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
@@ -49,7 +47,7 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private CardView profilecard;
     private TwitterLoginButton twitterLoginButton;
     private SharedPreferences sharedPreferences;
     private ImageView add_account;
@@ -106,14 +104,15 @@ public class ProfileFragment extends Fragment {
         //finally initialize twitter with created configs
         Twitter.initialize(config);
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        add_account = v.findViewById(R.id.add_account);
-        add_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomActivity(view);
-            }
-        });
+        profilecard = v.findViewById(R.id.profilecard);
+        profilecard.setBackgroundResource(R.drawable.heading_tags);
+//        add_account = v.findViewById(R.id.add_account);
+//        add_account.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                bottomActivity(view);
+//            }
+//        });
         //ShimmerEffect
 //        shimmerFrameLayout = v.findViewById(R.id.shimmer_view_container);
 //        shimmerFrameLayout.setVisibility(View.VISIBLE);
@@ -139,13 +138,13 @@ public class ProfileFragment extends Fragment {
 
 
 
-        name_t = v.findViewById(R.id.name_txt);
-        gender_t = v.findViewById(R.id.gender_txt);
-        birthday_t = v.findViewById(R.id.birthday_txt);
-        location_t = v.findViewById(R.id.location_txt);
-        email_t = v.findViewById(R.id.email_txt);
-
-        name_t.setText(username);
+//        name_t = v.findViewById(R.id.name_txt);
+//        gender_t = v.findViewById(R.id.gender_txt);
+//        birthday_t = v.findViewById(R.id.birthday_txt);
+//        location_t = v.findViewById(R.id.location_txt);
+//        email_t = v.findViewById(R.id.email_txt);
+//
+//        name_t.setText(username);
 //        gender_t.setText(gender);
 //        birthday_t.setText(birthday);
 //        email_t.setText(email);
