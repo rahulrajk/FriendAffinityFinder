@@ -12,10 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.login.widget.ProfilePictureView;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -49,6 +52,7 @@ public class ProfileFragment extends Fragment {
 
     private TwitterLoginButton twitterLoginButton;
     private SharedPreferences sharedPreferences;
+    private ImageView add_account;
     MainActivity mainActivity;
     private TextView name_t,gender_t,birthday_t,email_t,location_t;
 //    private ShimmerFrameLayout shimmerFrameLayout;
@@ -91,22 +95,31 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        //Initialising twitter login
+        TwitterConfig config = new TwitterConfig.Builder(getActivity())
+                .logger(new DefaultLogger(Log.DEBUG))//enable logging when app is in debug mode
+                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.consumer_key), getResources().getString(R.string.consumer_secret_key)))//pass the created app Consumer KEY and Secret also called API Key and Secret
+                .debug(true)//enable debug mode
+                .build();
+
+        //finally initialize twitter with created configs
+        Twitter.initialize(config);
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        add_account = v.findViewById(R.id.add_account);
+        add_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomActivity(view);
+            }
+        });
         //ShimmerEffect
 //        shimmerFrameLayout = v.findViewById(R.id.shimmer_view_container);
 //        shimmerFrameLayout.setVisibility(View.VISIBLE);
 //        shimmerFrameLayout.startShimmerAnimation();
 
-//        //Initialising twitter login
-//        TwitterConfig config = new TwitterConfig.Builder(getActivity())
-//                .logger(new DefaultLogger(Log.DEBUG))//enable logging when app is in debug mode
-//                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.consumer_key), getResources().getString(R.string.consumer_secret_key)))//pass the created app Consumer KEY and Secret also called API Key and Secret
-//                .debug(true)//enable debug mode
-//                .build();
-//
-//        //finally initialize twitter with created configs
-//        Twitter.initialize(config);
+
         sharedPreferences = getActivity().getSharedPreferences("myPref",MODE_PRIVATE);
 
         String userid = sharedPreferences.getString("userid","");
@@ -123,23 +136,8 @@ public class ProfileFragment extends Fragment {
 
 
 
-//        twitterLoginButton =  v.findViewById(R.id.default_twitter_login_button);
-//        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
-//            @Override
-//            public void success(Result<TwitterSession> result) {
-//                // Do something with result, which provides a TwitterSession for making API calls
-//                Log.d("twittersuccess","twittersuccess");
-//                Log.d("twitterresponse",result.data.getUserName());
-//
-//            }
-//
-//            @Override
-//            public void failure(TwitterException exception) {
-//                // Do something on failure
-//                Log.d("twitterfailure",exception.toString());
-//
-//            }
-//        });
+
+
 
         name_t = v.findViewById(R.id.name_txt);
         gender_t = v.findViewById(R.id.gender_txt);
@@ -164,7 +162,8 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
+        Log.d("entering","entering");
+        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -213,5 +212,37 @@ public class ProfileFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    //Bottom Activity
+
+    private void bottomActivity(final View view1) {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+        View view = getActivity().getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
+
+        twitterLoginButton =  view.findViewById(R.id.default_twitter_login_button);
+
+        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                // Do something with result, which provides a TwitterSession for making API calls
+                Log.d("twitterresponse",result.data.getUserName());
+                bottomSheetDialog.dismiss();
+
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                // Do something on failure
+                Log.d("twitterfailure",exception.toString());
+
+            }
+        });
+
+
+
     }
 }

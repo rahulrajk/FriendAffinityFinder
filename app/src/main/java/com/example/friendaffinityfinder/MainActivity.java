@@ -120,20 +120,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (sharedPreferences.contains("userid")&&isLoggedIn){
-            Log.d("contains","userid");
-            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-            startActivity(intent);
-//            String userid = sharedPreferences.getString("userid","");
-//            String username = sharedPreferences.getString("username","");
-//            String gender = sharedPreferences.getString("gender","");
-//            String birthday = sharedPreferences.getString("birthday","");
-//            String location = sharedPreferences.getString("city","");
-//            String email = sharedPreferences.getString("email","");
-//            Log.d("stored",userid+username+gender+birthday+location+email);
-        }else{
-            Toast.makeText(MainActivity.this,"OOPS! Something went wrong!!!Please login again!!!",Toast.LENGTH_SHORT).show();
-        }
+//        if (sharedPreferences.contains("userid")&&isLoggedIn){
+//            Log.d("contains","userid");
+//            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+//            startActivity(intent);
+//            finish();
+////            String userid = sharedPreferences.getString("userid","");
+////            String username = sharedPreferences.getString("username","");
+////            String gender = sharedPreferences.getString("gender","");
+////            String birthday = sharedPreferences.getString("birthday","");
+////            String location = sharedPreferences.getString("city","");
+////            String email = sharedPreferences.getString("email","");
+////            Log.d("stored",userid+username+gender+birthday+location+email);
+//        }else{
+//            Toast.makeText(MainActivity.this,"OOPS! Something went wrong!!!Please login again!!!",Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -217,8 +218,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("contains","userid");
             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
             startActivity(intent);
+            finish();
         }else{
-            Toast.makeText(MainActivity.this,"OOPS! Something went wrong!!!Please login again!!!",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this,"Login to Continue",Toast.LENGTH_SHORT).show();
         }
 
     }
